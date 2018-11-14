@@ -1,12 +1,12 @@
 const serverless = require('serverless-http');
 const express = require('express')
+const api = require('./api')
 const cors = require('cors')
 const app = express()
 
+
 app.use(cors())
 
-app.get('/api', function (req, res) {
-  res.json({ 'hello': 'world!' })
-})
+app.use('/api', api)
 
 module.exports.handler = serverless(app);
